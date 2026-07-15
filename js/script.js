@@ -1,1 +1,1 @@
-console.log("Rostos d'Amor iniciado.");
+console.log(pessoas);
