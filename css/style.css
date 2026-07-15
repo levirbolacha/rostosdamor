@@ -52,5 +52,18 @@ main{
     font-size:1.1rem;
     opacity:0.9;
 }
+    #galeria img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,.2);
+    transition:.3s;
+}
+
+#galeria img:hover{
+    transform:scale(1.05);
+}
     gap:20px;
 }
