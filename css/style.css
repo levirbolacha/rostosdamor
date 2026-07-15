@@ -27,6 +27,14 @@ header p{
     margin-bottom:20px;
 }
 
+.lema{
+    margin-top:10px;
+    margin-bottom:25px;
+    font-style:italic;
+    font-size:1.1rem;
+    opacity:0.9;
+}
+
 #pesquisa{
     width:90%;
     max-width:500px;
@@ -45,14 +53,10 @@ main{
 #galeria{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    .lema{
-    margin-top:10px;
-    margin-bottom:25px;
-    font-style:italic;
-    font-size:1.1rem;
-    opacity:0.9;
+    gap:20px;
 }
-    #galeria img{
+
+#galeria img{
     width:100%;
     aspect-ratio:1/1;
     object-fit:cover;
@@ -64,6 +68,4 @@ main{
 
 #galeria img:hover{
     transform:scale(1.05);
-}
-    gap:20px;
 }
