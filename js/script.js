@@ -1,7 +1,14 @@
 const galeria = document.getElementById("galeria");
 
-const pessoa = pessoas[0];
+galeria.innerHTML = "";
 
-galeria.innerHTML = `
-    <img src="imagens/${pessoa.foto}" alt="${pessoa.nome}">
-`;
+for (const pessoa of pessoas) {
+
+    galeria.innerHTML += `
+        <img
+            src="imagens/${pessoa.foto}"
+            alt="${pessoa.nome}"
+            title="${pessoa.nome}">
+    `;
+
+}
