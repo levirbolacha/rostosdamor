@@ -32,7 +32,7 @@ header p{
     margin-bottom:25px;
     font-style:italic;
     font-size:1.1rem;
-    opacity:0.9;
+    opacity:.9;
 }
 
 #pesquisa{
@@ -61,7 +61,7 @@ main{
     border-radius:10px;
     overflow:hidden;
     box-shadow:0 3px 8px rgba(0,0,0,.15);
-    transition:0.3s;
+    transition:.3s;
 }
 
 .cartao:hover{
@@ -82,4 +82,46 @@ main{
     text-align:center;
     font-size:1rem;
     font-weight:600;
+}
+
+/* ---------- MODAL ---------- */
+
+#modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+#modal-conteudo{
+    background:white;
+    width:90%;
+    max-width:600px;
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    position:relative;
+}
+
+#modal-foto{
+    width:100%;
+    max-height:500px;
+    object-fit:contain;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+#modal-nome{
+    font-size:2rem;
+}
+
+#fechar{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:32px;
+    cursor:pointer;
 }
