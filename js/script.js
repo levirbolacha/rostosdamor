@@ -1,10 +1,5 @@
 const galeria = document.getElementById("galeria");
 
-const modal = document.getElementById("modal");
-const modalFoto = document.getElementById("modal-foto");
-const modalNome = document.getElementById("modal-nome");
-const fechar = document.getElementById("fechar");
-
 galeria.innerHTML = "";
 
 for (const pessoa of pessoas) {
@@ -14,9 +9,7 @@ for (const pessoa of pessoas) {
 
             <img
                 src="imagens/${pessoa.foto}"
-                alt="${pessoa.nome}"
-                data-foto="${pessoa.foto}"
-                data-nome="${pessoa.nome}">
+                alt="${pessoa.nome}">
 
             <h3>${pessoa.nome}</h3>
 
@@ -31,28 +24,8 @@ imagens.forEach(imagem => {
 
     imagem.addEventListener("click", function(){
 
-        modal.style.display = "flex";
-
-        modalFoto.src = "imagens/" + this.dataset.foto;
-
-        modalNome.textContent = this.dataset.nome;
+        alert("Clique detetado!");
 
     });
-
-});
-
-fechar.addEventListener("click", function(){
-
-    modal.style.display = "none";
-
-});
-
-modal.addEventListener("click", function(event){
-
-    if(event.target === modal){
-
-        modal.style.display = "none";
-
-    }
 
 });
