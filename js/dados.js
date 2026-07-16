@@ -1,26 +1,32 @@
 const pessoas = [
     {
+        id: 1,
         nome: "Pessoa 1",
-        foto: "714775971_1657729982825857_2127176187178448588_n.jpg"
+        foto: "714775971_1657729982825857_2127176187178448588_n.jpg",
+        nascimento: "",
+        falecimento: "",
+        local: "",
+        profissao: "",
+        biografia: "",
+        pai: "",
+        mae: "",
+        conjuge: "",
+        filhos: [],
+        fontes: []
     },
     {
+        id: 2,
         nome: "Pessoa 2",
-        foto: "714775971_1657729982825857_2127176187178448588_n.jpg"
-    },
-    {
-        nome: "Pessoa 3",
-        foto: "714775971_1657729982825857_2127176187178448588_n.jpg"
-    },
-    {
-        nome: "Pessoa 4",
-        foto: "714775971_1657729982825857_2127176187178448588_n.jpg"
-    },
-    {
-        nome: "Pessoa 5",
-        foto: "714775971_1657729982825857_2127176187178448588_n.jpg"
-    },
-    {
-        nome: "Pessoa 6",
-        foto: "714775971_1657729982825857_2127176187178448588_n.jpg"
+        foto: "714775971_1657729982825857_2127176187178448588_n.jpg",
+        nascimento: "",
+        falecimento: "",
+        local: "",
+        profissao: "",
+        biografia: "",
+        pai: "",
+        mae: "",
+        conjuge: "",
+        filhos: [],
+        fontes: []
     }
 ];
