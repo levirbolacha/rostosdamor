@@ -1,0 +1,38 @@
+[
+    {
+        "id": "P000001",
+        "nome": "Emília Pedra Domingues",
+
+        "fotografiaPrincipal": "principal.jpg",
+
+        "fotografias": [
+            "principal.jpg"
+        ],
+
+        "nascimento": {
+            "data": "",
+            "local": ""
+        },
+
+        "falecimento": {
+            "data": "",
+            "local": ""
+        },
+
+        "profissao": "",
+
+        "residencias": [],
+
+        "pais": [],
+        "irmaos": [],
+        "conjuge": [],
+        "filhos": [],
+
+        "biografiaCurta": "",
+        "biografiaCompleta": "",
+
+        "documentos": [],
+        "fontes": [],
+        "notas": []
+    }
+]

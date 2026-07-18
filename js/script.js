@@ -6,69 +6,117 @@ const modalNome = document.getElementById("modal-nome");
 const modalNascimento = document.getElementById("modal-nascimento");
 const modalFalecimento = document.getElementById("modal-falecimento");
 const modalProfissao = document.getElementById("modal-profissao");
+const modalBiografia = document.getElementById("modal-biografia");
+const botaoFicha = document.getElementById("ver-ficha");
 const fechar = document.getElementById("fechar");
+const pesquisa = document.getElementById("pesquisa");
 
-galeria.innerHTML = "";
+let pessoas = [];
 
-for (const pessoa of pessoas) {
+function mostrarModal(pessoa){
 
-    galeria.innerHTML += `
-        <div class="cartao">
+    modal.style.display = "flex";
 
-            <img
-                src="imagens/${pessoa.foto}"
-                alt="${pessoa.nome}"
-                data-foto="${pessoa.foto}"
-                data-nome="${pessoa.nome}"
-data-nascimento="${pessoa.nascimento}"
-data-falecimento="${pessoa.falecimento}"
-data-profissao="${pessoa.profissao}">
+    modalFoto.src = `imagens/${pessoa.id}/${pessoa.fotografiaPrincipal}`;
 
-            <h3>${pessoa.nome}</h3>
+    modalNome.textContent = pessoa.nome;
 
-        </div>
-    `;
+    modalNascimento.textContent =
+        pessoa.nascimento.data ?
+        "Nascimento: " + pessoa.nascimento.data : "";
+
+    modalFalecimento.textContent =
+        pessoa.falecimento.data ?
+        "Falecimento: " + pessoa.falecimento.data : "";
+
+    modalProfissao.textContent =
+        pessoa.profissao ?
+        "Profissão: " + pessoa.profissao : "";
+
+    modalBiografia.textContent = pessoa.biografiaCurta || "";
+
+    botaoFicha.onclick = function(){
+
+        window.location.href = "pessoa.html?id=" + pessoa.id;
+
+    };
 
 }
 
-const imagens = document.querySelectorAll(".cartao img");
+function construirGaleria(lista){
 
-imagens.forEach(imagem => {
+    galeria.innerHTML = "";
 
-    imagem.addEventListener("click", function(){
+    for(const pessoa of lista){
 
-        modal.style.display = "flex";
-        modalFoto.src = "imagens/" + this.dataset.foto;
-modalNome.textContent = this.dataset.nome;
+        const cartao = document.createElement("div");
+        cartao.className = "cartao";
 
-modalNascimento.textContent =
-    this.dataset.nascimento ?
-    "Nascimento: " + this.dataset.nascimento : "";
+        cartao.innerHTML = `
+            <img
+                src="imagens/${pessoa.id}/${pessoa.fotografiaPrincipal}"
+                alt="${pessoa.nome}">
+            <h3>${pessoa.nome}</h3>
+        `;
 
-modalFalecimento.textContent =
-    this.dataset.falecimento ?
-    "Falecimento: " + this.dataset.falecimento : "";
+        cartao.querySelector("img")
+            .addEventListener("click", ()=>mostrarModal(pessoa));
 
-modalProfissao.textContent =
-    this.dataset.profissao ?
-    "Profissão: " + this.dataset.profissao : "";
+        galeria.appendChild(cartao);
+
+    }
+
+}
+
+async function iniciar(){
+
+    pessoas = await obterTodasAsPessoas();
+
+    pessoas.sort((a,b)=>a.nome.localeCompare(b.nome,"pt"));
+
+    construirGaleria(pessoas);
+
+}
+
+if(pesquisa){
+
+    pesquisa.addEventListener("input",function(){
+
+        const texto = this.value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g,"");
+
+        const resultado = pessoas.filter(p=>{
+
+            return p.nome
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g,"")
+                .includes(texto);
+
+        });
+
+        construirGaleria(resultado);
 
     });
 
+}
+
+fechar.addEventListener("click",()=>{
+
+    modal.style.display="none";
+
 });
 
-fechar.addEventListener("click", function(){
+modal.addEventListener("click",(e)=>{
 
-    modal.style.display = "none";
+    if(e.target===modal){
 
-});
-
-modal.addEventListener("click", function(event){
-
-    if(event.target === modal){
-
-        modal.style.display = "none";
+        modal.style.display="none";
 
     }
 
 });
+
+iniciar();

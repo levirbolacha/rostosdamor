@@ -27,9 +27,7 @@ async function obterTodasAsPessoas() {
     const indice = await obterIndice();
 
     const pessoas = await Promise.all(
-
         indice.map(item => obterPessoa(item.id))
-
     );
 
     return pessoas;

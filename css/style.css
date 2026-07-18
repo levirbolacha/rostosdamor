@@ -4,124 +4,297 @@
     box-sizing:border-box;
 }
 
+:root{
+
+    --cor-principal:#6b0f1a;
+    --cor-fundo:#f5f5f5;
+    --cor-cartao:#ffffff;
+    --cor-texto:#333333;
+    --cor-borda:#dddddd;
+    --largura:1400px;
+
+}
+
 body{
+
     font-family:Arial, Helvetica, sans-serif;
-    background:#f5f5f5;
-    color:#333;
+    background:var(--cor-fundo);
+    color:var(--cor-texto);
+    line-height:1.6;
+
+}
+
+a{
+
+    color:inherit;
+    text-decoration:none;
+
+}
+
+img{
+
+    display:block;
+    max-width:100%;
+
 }
 
 header{
-    background:#6b0f1a;
+
+    background:var(--cor-principal);
     color:white;
-    padding:40px 20px;
     text-align:center;
+    padding:45px 20px;
+
 }
 
 header h1{
+
     font-size:3rem;
     margin-bottom:10px;
+
 }
 
 header p{
-    font-size:1.2rem;
-    margin-bottom:20px;
+
+    font-size:1.15rem;
+
 }
 
 .lema{
-    margin-top:10px;
-    margin-bottom:25px;
+
+    margin:20px 0;
     font-style:italic;
-    font-size:1.1rem;
-    opacity:.9;
+
 }
 
 #pesquisa{
-    width:90%;
-    max-width:500px;
-    padding:12px;
-    font-size:18px;
+
+    width:min(500px,90%);
+    padding:14px;
     border:none;
     border-radius:8px;
+    font-size:18px;
+
 }
 
 main{
-    max-width:1400px;
-    margin:40px auto;
-    padding:20px;
+
+    max-width:var(--largura);
+    margin:auto;
+    padding:40px 20px;
+
 }
 
+/* ---------------- GALERIA ---------------- */
+
 #galeria{
+
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+    gap:24px;
+
 }
 
 .cartao{
-    background:white;
-    border-radius:10px;
+
+    background:var(--cor-cartao);
+    border-radius:12px;
     overflow:hidden;
-    box-shadow:0 3px 8px rgba(0,0,0,.15);
-    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    transition:.25s;
+
 }
 
 .cartao:hover{
-    transform:translateY(-5px);
-    box-shadow:0 8px 20px rgba(0,0,0,.20);
+
+    transform:translateY(-6px);
+
 }
 
 .cartao img{
+
     width:100%;
-    aspect-ratio:1/1;
+    aspect-ratio:1;
     object-fit:cover;
-    display:block;
     cursor:pointer;
+
 }
 
 .cartao h3{
+
     padding:15px;
     text-align:center;
     font-size:1rem;
-    font-weight:600;
+
 }
 
-/* ---------- MODAL ---------- */
+/* ---------------- MODAL ---------------- */
 
 #modal{
+
     display:none;
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.75);
     justify-content:center;
     align-items:center;
-    z-index:1000;
+    padding:20px;
+    z-index:9999;
+
 }
 
 #modal-conteudo{
+
     background:white;
-    width:90%;
-    max-width:600px;
+    width:min(650px,100%);
     border-radius:12px;
     padding:25px;
-    text-align:center;
     position:relative;
+    text-align:center;
+
 }
 
 #modal-foto{
+
     width:100%;
     max-height:500px;
     object-fit:contain;
     border-radius:10px;
     margin-bottom:20px;
+
 }
 
-#modal-nome{
-    font-size:2rem;
+#modal h2{
+
+    margin-bottom:15px;
+
+}
+
+#modal p{
+
+    margin-bottom:10px;
+
+}
+
+#ver-ficha{
+
+    margin-top:20px;
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    background:var(--cor-principal);
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+#ver-ficha:hover{
+
+    opacity:.9;
+
 }
 
 #fechar{
+
     position:absolute;
-    top:10px;
-    right:20px;
-    font-size:32px;
+    top:12px;
+    right:18px;
+    font-size:34px;
     cursor:pointer;
+
+}
+
+/* ---------------- FICHA ---------------- */
+
+.ficha-pessoa{
+
+    max-width:1100px;
+    margin:auto;
+
+}
+
+.cabecalho-pessoa{
+
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:40px;
+    align-items:start;
+    margin-bottom:50px;
+
+}
+
+.foto-principal{
+
+    width:100%;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+}
+
+.dados-principais h1{
+
+    font-size:2.6rem;
+    margin-bottom:25px;
+
+}
+
+.dados-principais p{
+
+    margin-bottom:12px;
+    font-size:1.1rem;
+
+}
+
+.bloco-ficha{
+
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.bloco-ficha h2{
+
+    margin-bottom:20px;
+    color:var(--cor-principal);
+
+}
+
+/* ---------------- RESPONSIVO ---------------- */
+
+@media(max-width:900px){
+
+    .cabecalho-pessoa{
+
+        grid-template-columns:1fr;
+        text-align:center;
+
+    }
+
+    .foto-principal{
+
+        max-width:320px;
+        margin:auto;
+
+    }
+
+    header h1{
+
+        font-size:2.3rem;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    #galeria{
+
+        grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+
+    }
+
 }
